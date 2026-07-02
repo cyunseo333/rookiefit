@@ -11,6 +11,11 @@ export type Product = {
   reason: string;
   description: string;
   image: string;
+  sizes?: string[];
+  sizeGuide?: string;
+  fabric?: string;
+  care?: string;
+  detailDescription?: string;
 };
 
 export const products: Product[] = [
@@ -204,6 +209,33 @@ export function formatPrice(price: number) {
 
 export function findProduct(id: string) {
   return products.find((product) => product.id === id);
+}
+
+export function getProductDetails(product: Product) {
+  const isBottom = product.category === "bottoms";
+  const isAccessory = product.category === "accessories";
+
+  return {
+    sizes: product.sizes || (isAccessory ? ["FREE"] : ["S", "M", "L"]),
+    sizeGuide:
+      product.sizeGuide ||
+      (isAccessory
+        ? "FREE 사이즈로 제작되어 가볍게 스타일링하기 좋습니다."
+        : isBottom
+          ? "정사이즈를 추천합니다. 여유 있는 핏을 원하면 한 사이즈 크게 선택해주세요."
+          : "평소 착용하는 상의 사이즈를 추천합니다. 루즈한 실루엣을 원하면 한 사이즈 크게 선택해주세요."),
+    fabric:
+      product.fabric ||
+      (isAccessory ? "Synthetic / Metal detail" : "Cotton blend / Polyester"),
+    care:
+      product.care ||
+      (isAccessory
+        ? "물기와 강한 마찰을 피하고, 사용 후 마른 천으로 가볍게 닦아 보관해주세요."
+        : "단독 손세탁 또는 드라이클리닝을 권장합니다. 건조기 사용은 피해주세요."),
+    detailDescription:
+      product.detailDescription ||
+      `${product.description} ${product.reason} RookieFit은 체형을 보완해야 할 대상으로 보지 않고, 자연스럽게 어울리는 실루엣을 찾는 기준으로 상품을 제안합니다.`,
+  };
 }
 
 export function productsByBodyType(bodyType: BodyType) {

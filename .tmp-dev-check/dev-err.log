@@ -1,8 +1,0 @@
-⨯ Another next dev server is already running.
-
-- Local:        http://localhost:3000
-- PID:          23924
-- Dir:          C:\Users\yscmt\Desktop\rookieleague\rookiefit-next
-- Log:          .next\dev\logs\next-development.log
-
-Run taskkill /PID 23924 /F to stop it.

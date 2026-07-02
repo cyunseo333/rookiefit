@@ -37,10 +37,23 @@ npm run dev
 ```bash
 NEXT_PUBLIC_SUPABASE_URL=...
 NEXT_PUBLIC_SUPABASE_ANON_KEY=...
+NEXT_PUBLIC_TOSS_CLIENT_KEY=...
+TOSS_SECRET_KEY=...
 ```
 
 현재 화면은 Supabase 연결 전에도 확인할 수 있도록 브라우저 저장소 기반으로 동작합니다.
 다음 단계에서 Supabase Auth, cart_items, orders 테이블에 실제 저장되도록 연결하면 됩니다.
+
+## Toss Payments Setup
+
+토스페이먼츠 결제위젯 구조가 준비되어 있습니다.
+
+필요한 키:
+
+- `NEXT_PUBLIC_TOSS_CLIENT_KEY`: 브라우저에서 결제위젯을 렌더링할 때 사용
+- `TOSS_SECRET_KEY`: 서버 API Route에서 결제 승인 요청을 보낼 때 사용
+
+키를 넣은 뒤 `/checkout`에서 결제위젯이 표시되고, 결제 성공 시 `/payment/success`, 실패 시 `/payment/fail`로 이동합니다.
 
 ## Deploy
 

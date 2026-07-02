@@ -1,0 +1,10 @@
+
+> rookiefit-next@0.1.0 dev
+> next dev --port 3001
+
+▲ Next.js 16.2.10 (Turbopack)
+- Local:         http://localhost:3001
+- Network:       http://172.16.17.167:3001
+- Environments: .env.local
+✓ Ready in 1141ms
+[?25h
